@@ -1,2 +1,181 @@
-# Agent-Based-Modelling-for-Scam-Spread
-Agent-Based Modelling for Scam Spread
+# Scam Spread ABM: Chasing Dirty Coins (•̀ᴗ•́)و
+
+Can we **stop scammers** faster by combining **agent-based modelling + transaction networks**?
+
+This project builds an Agent-Based Model (ABM) on a large synthetic financial transaction graph (5M transactions) to study how fraudulent behaviours (scams, money-laundering, account takeover) propagate and which platform / AML interventions work best.
+
+---
+
+## Why this project?
+Fraud moves through networks — payments, accounts, and social links. Traditional ML flags individual suspicious transactions, but platform-level interventions (takedowns, throttling, awareness policies) act on the network.  
+This repository demonstrates an end-to-end pipeline that:
+
+- constructs a transaction graph from large transaction logs  
+- seeds fraud from labelled transactions and simulates diffusion dynamics  
+- compares interventions (hub block, edge throttle, awareness campaigns) with batch experiments  
+- provides an interactive Mesa dashboard and reproducible experiment outputs for portfolio / technical interviews
+
+---
+
+## Quick Facts
+**Dataset**: 5,000,000 synthetic transactions (Kaggle synthetic financial dataset)  
+**Nodes**: accounts (after sampling / dedup) — experiments use 10k–200k node subgraphs for tractability  
+**Edges**: sender → receiver directed transactions (weighted by frequency / amount)  
+**Labels**: `is_fraud` used to seed infections and validate outcomes  
+**Core tools**: Python, Mesa, NetworkX, pandas, matplotlib, scikit-learn
+
+---
+
+## 📊 Results (example / placeholder visuals)
+
+Below are the kinds of outputs and visual checks included in the notebooks and `reports/figures`. Replace with your generated charts after running the pipeline.
+
+### 1. Network snapshot (sample subgraph)
+Visual: `reports/figures/network_snapshot.png`  
+*What to look for*: fraud clusters often surround a handful of highly connected accounts (potential intermediaries).
+
+### 2. S/A/I/R epidemic curves under 3 interventions
+Visual: `reports/figures/epidemic_curves_interventions.png`  
+*What to look for*: blocking top-k hubs typically reduces peak infection; awareness campaigns reduce transmission probability and shorten outbreaks.
+
+### 3. Intervention summary table
+| Intervention | Final infected % | Peak infected | Steps to containment |
+|--------------|------------------:|--------------:|---------------------:|
+| None (baseline) | 8.3% | 12.7% | 120 |
+| Block top-10 hubs | 3.1% | 4.8% | 80 |
+| Edge throttle 50% | 5.2% | 7.5% | 95 |
+| Awareness 10% | 4.6% | 6.3% | 88 |
+
+> Note: numbers above are illustrative — run `run.py` for reproducible experiment CSVs.
+
+---
+
+## Dataset & Data Setup
+
+This project uses a synthetic 5M transaction dataset (Kaggle). Place the downloaded CSV(s) in:
+
+```
+data/raw/
+```
+
+Recommended preprocessing pipeline will sample / aggregate transactions to create tractable subgraphs:
+
+- `data/raw/transactions.csv` → `data/processed/transactions_sample_100k.csv`
+- Node attributes (anomaly scores, device metadata) are preserved for infection probability modulation.
+
+---
+
+## 📂 Repository Structure
+
+```
+mesa-scam-spread/
+├── data/
+│   ├── raw/                      # raw CSVs (NOT included)
+│   └── processed/                # sampled / cleaned graphs & tables
+├── notebooks/
+│   ├── 01_data_exploration.ipynb
+│   ├── 02_network_construction.ipynb
+│   ├── 03_abm_simulation.ipynb
+│   ├── 04_experiments_analysis.ipynb
+│   └── 05_visualization_dashboard.ipynb
+├── model.py                      # ScamSpreadModel (Mesa ABM core)
+├── server.py                     # Interactive Mesa visualization
+├── run.py                        # Batch experiments, outputs CSV
+├── scripts/
+│   ├── preprocess.py             # CSV -> sampled network + node attrs
+│   └── utils.py                  # helpers & metrics
+├── reports/
+│   └── figures/                  # placeholder images & experiment plots
+├── requirements.txt
+├── .gitignore
+└── README.md
+```
+
+---
+
+## Notebook Overview
+
+### **01_data_exploration.ipynb**
+- Load subset of transactions (fast checks)  
+- Global statistics: unique accounts, transaction volume distribution, fraud rate  
+- Visual checks: amount distribution, time-of-day patterns, device/channel breakdown
+
+### **02_network_construction.ipynb**
+- Build directed NetworkX graph: nodes = accounts, edges = aggregated transactions  
+- Weight edges by frequency or total amount; attach node features (anomaly, velocity)  
+- Inspect degree distribution, identify hubs, extract LCC or sampled subgraphs
+
+### **03_abm_simulation.ipynb**
+- Integrate graph into `ScamSpreadModel` (model.py)  
+- Define S / A / I / R states, infection mechanics, and intervention parameters  
+- Run small experiments, log S/A/I/R over time, visualize single runs
+
+### **04_experiments_analysis.ipynb**
+- Run `run.py` experiments (grid search over interventions) or call batch runner directly  
+- Aggregate `results_summary.csv`, compute final infection rates, containment steps, and cost-effectiveness metrics  
+- Produce comparative charts and tables for README/report
+
+### **05_visualization_dashboard.ipynb**
+- Optional Streamlit / Mesa snapshot exports for demo  
+- Export interactive snapshots and GIFs for portfolio
+
+---
+
+## How to run (quick start)
+
+1. Create virtual env and install:
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+2. Preprocess raw data (example):
+```bash
+python scripts/preprocess.py --input data/raw/transactions.csv --output data/processed/transactions_sample_100k.csv --sample 100000
+```
+
+3. Start interactive ABM:
+```bash
+python server.py
+# open http://127.0.0.1:8521
+```
+
+4. Run batch experiments:
+```bash
+python run.py
+# writes results_summary.csv in repo root or results/
+```
+
+---
+
+## Reproducibility & Tips
+
+- For interactive demos use sampled subgraphs (10k–50k nodes). For stronger claims, run batch experiments on larger subgraphs on a machine with sufficient RAM.  
+- Tie `is_fraud` labelled accounts to initial infected seeds; you can also experiment with partial/noisy labelling to simulate detection lag.  
+- Use `edge_throttle` to simulate rate limiting; use hub blocking to simulate targeted takedowns.
+
+---
+
+## Project Status (⌛)
+
+- ✅ Data exploration + preprocessing (notebooks 01–02)  
+- ⏳ Core Mesa ABM implementation (`model.py`, `server.py`)  
+- ⏳ Batch experiment runner (`run.py`) — outputs csv summaries  
+- ⏳ Notebook 03 (simulation examples) — in progress (examples ready)  
+- ⏳ Notebook 04/05 — planned (GNN comparison & anomaly detection)
+
+---
+
+## Next Steps (plausible extension ideas)
+- Integrate anomaly scores into per-edge / per-node infection probabilities  
+- Cost-aware optimization: find minimal takedown set under budget constraints  
+- Compare ABM outcomes with GNN-based risk scoring for a hybrid pipeline  
+- Deploy a small Streamlit demo for interview / portfolio showcase
+
+---
+
+## License
+MIT — use it, extend it, and help stop financial crime.
+
+> *"Platform interventions matter — modeling them helps us make better decisions."*
