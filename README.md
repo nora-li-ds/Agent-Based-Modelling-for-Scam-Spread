@@ -1,4 +1,4 @@
-# Scam Spread ABM: Chasing Dirty Coins (•̀ᴗ•́)و
+# FinCrime ABM Simulator (•̀ᴗ•́)و
 
 Can we **stop scammers** faster by combining **agent-based modelling + transaction networks**?
 
