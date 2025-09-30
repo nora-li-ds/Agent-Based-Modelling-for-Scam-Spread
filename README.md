@@ -1,5 +1,16 @@
 # FinCrime ABM Simulator (•̀ᴗ•́)و
 
+---
+
+## Project Status (⌛)
+
+- ✅ Data exploration + preprocessing (notebooks 01–02)  
+- ⏳ Core Mesa ABM implementation (`model.py`, `server.py`)  
+- ⏳ Batch experiment runner (`run.py`) — outputs csv summaries  
+- ⏳ Notebook 03 (simulation examples) — in progress (examples ready)  
+- ⏳ Notebook 04/05 — planned (GNN comparison & anomaly detection)
+
+
 Can we **stop scammers** faster by combining **agent-based modelling + transaction networks**?
 
 This project builds an Agent-Based Model (ABM) on a large synthetic financial transaction graph (5M transactions) to study how fraudulent behaviours (scams, money-laundering, account takeover) propagate and which platform / AML interventions work best.
@@ -171,15 +182,7 @@ python run.py
 - Tie `is_fraud` labelled accounts to initial infected seeds; you can also experiment with partial/noisy labelling to simulate detection lag.  
 - Use `edge_throttle` to simulate rate limiting; use hub blocking to simulate targeted takedowns.
 
----
 
-## Project Status (⌛)
-
-- ✅ Data exploration + preprocessing (notebooks 01–02)  
-- ⏳ Core Mesa ABM implementation (`model.py`, `server.py`)  
-- ⏳ Batch experiment runner (`run.py`) — outputs csv summaries  
-- ⏳ Notebook 03 (simulation examples) — in progress (examples ready)  
-- ⏳ Notebook 04/05 — planned (GNN comparison & anomaly detection)
 
 ---
 
