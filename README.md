@@ -2,7 +2,7 @@
 
 ---
 
-## Project Status (⌛)
+## Project Status 
 
 - ✅ Data exploration + preprocessing (notebooks 01–02)  
 - ⏳ Core Mesa ABM implementation (`model.py`, `server.py`)  
@@ -92,7 +92,7 @@ Recommended preprocessing pipeline will sample / aggregate transactions to creat
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```
 mesa-scam-spread/
@@ -186,7 +186,8 @@ python run.py
 
 ---
 
-## Next Steps (plausible extension ideas)
+## Next Steps (plausible extension ideas) (•̀ᴗ•́)و
+
 - Integrate anomaly scores into per-edge / per-node infection probabilities  
 - Cost-aware optimization: find minimal takedown set under budget constraints  
 - Compare ABM outcomes with GNN-based risk scoring for a hybrid pipeline  
