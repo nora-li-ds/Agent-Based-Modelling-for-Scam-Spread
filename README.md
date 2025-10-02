@@ -6,9 +6,9 @@
 
 - ✅ Data exploration + preprocessing (notebooks 01–02)  
 - ⏳ Core Mesa ABM implementation (`model.py`, `server.py`)  
-- ⏳ Batch experiment runner (`run.py`) — outputs csv summaries  
-- ⏳ Notebook 03 (simulation examples) — in progress (examples ready)  
-- ⏳ Notebook 04/05 — planned (GNN comparison & anomaly detection)
+- 🔜  Batch experiment runner (`run.py`) — outputs csv summaries  
+- 🔜  Notebook 03 (simulation examples) — in progress (examples ready)  
+- 🔜  Notebook 04/05 — planned (GNN comparison & anomaly detection)
 
 
 Can we **stop scammers** faster by combining **agent-based modelling + transaction networks**?
