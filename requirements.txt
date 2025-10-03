@@ -1,0 +1,24 @@
+# Core scientific stack
+numpy
+pandas
+matplotlib
+
+# Graph & network analysis
+networkx
+
+# Agent-Based Modelling
+mesa
+
+# Machine learning / stats (for anomaly detection, comparisons later)
+scikit-learn
+
+# Interactive notebooks / viz
+jupyter
+notebook
+ipykernel
+
+# Optional interactive dashboard
+streamlit
+
+# Utils
+tqdm
