@@ -95,30 +95,40 @@ Recommended preprocessing pipeline will sample / aggregate transactions to creat
 ## Repository Structure
 
 ```
-mesa-scam-spread/
+Agent-Based-Modelling-for-Scam-Spread/
 ├── data/
-│   ├── raw/                      # raw CSVs (NOT included)
-│   └── processed/                # sampled / cleaned graphs & tables
+│ ├── raw/ # raw CSVs (NOT included, download from Kaggle)
+│ └── processed/ # sampled / cleaned graphs & tables
 ├── notebooks/
-│   ├── 01_data_exploration.ipynb
-│   ├── 02_network_construction.ipynb
-│   ├── 03_abm_simulation.ipynb
-│   ├── 04_experiments_analysis.ipynb
-│   └── 05_visualization_dashboard.ipynb
-├── model.py                      # ScamSpreadModel (Mesa ABM core)
-├── server.py                     # Interactive Mesa visualization
-├── run.py                        # Batch experiments, outputs CSV
+│ ├── 01_data_exploration.ipynb # ⏳ in progress (basic cells running)
+│ ├── 02_network_construction.ipynb # 🚧 planned
+│ ├── 03_abm_simulation.ipynb # 🚧 planned (linking to Mesa model)
+│ ├── 04_experiments_analysis.ipynb # 🚧 planned
+│ └── 05_visualization_dashboard.ipynb# 🚧 planned
+├── model.py # 🚧 ScamSpreadModel (Mesa ABM core, scaffold only)
+├── server.py # 🚧 Interactive Mesa visualization (planned)
+├── run.py # 🚧 Batch experiments (planned)
 ├── scripts/
-│   ├── preprocess.py             # CSV -> sampled network + node attrs
-│   └── utils.py                  # helpers & metrics
+│ ├── preprocess.py # ✅ CSV -> sampled network + node attrs
+│ └── utils.py # ✅ helpers & metrics
 ├── reports/
-│   └── figures/                  # placeholder images & experiment plots
+│ └── figures/ # placeholder images & experiment plots
 ├── requirements.txt
 ├── .gitignore
 └── README.md
+
 ```
 
 ---
+### ABM with Mesa
+
+The project is designed to use [Mesa](https://mesa.readthedocs.io/) for agent-based modelling.  
+At this stage, the core notebooks (01–02) cover data exploration and graph construction.  
+
+- Mesa integration (`model.py`, `server.py`) is **planned but not yet fully implemented**.  
+- Current focus: data preparation + exploratory analysis.  
+- Next step: build `ScamSpreadModel` in Mesa and connect it to the transaction graph.  
+
 
 ## Notebook Overview
 
