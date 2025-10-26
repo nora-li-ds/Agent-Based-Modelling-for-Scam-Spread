@@ -1,0 +1,8 @@
+{
+  "n_rows": 5000000,
+  "n_cols": 20,
+  "fraud_rate": 0.0359106,
+  "n_unique_senders": 896513,
+  "n_unique_receivers": 896639,
+  "timestamp_range": "2023-01-01T00:09:26.241974 \u2013 2024-01-01T22:58:30.131850"
+}
