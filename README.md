@@ -1,6 +1,7 @@
-# FinCrime ABM Simulator (•̀ᴗ•́)و
+# FinCrime ABM Simulator 
 
 ---
+This prototype explores diffusion dynamics similar to those seen in online threat propagation.
 
 ## Project Status 
 
