@@ -101,8 +101,8 @@ Agent-Based-Modelling-for-Scam-Spread/
 │ ├── raw/ # raw CSVs (NOT included, download from Kaggle)
 │ └── processed/ # sampled / cleaned graphs & tables
 ├── notebooks/
-│ ├── 01_data_exploration.ipynb # ⏳ in progress (basic cells running)
-│ ├── 02_network_construction.ipynb # 🚧 planned
+│ ├── 01_data_exploration.ipynb # ✅
+│ ├── 02_network_construction.ipynb # ⏳ in progress
 │ ├── 03_abm_simulation.ipynb # 🚧 planned (linking to Mesa model)
 │ ├── 04_experiments_analysis.ipynb # 🚧 planned
 │ └── 05_visualization_dashboard.ipynb# 🚧 planned
